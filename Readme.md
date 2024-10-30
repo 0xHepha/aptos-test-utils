@@ -2,11 +2,14 @@
 
 This is a Move module for the Aptos Blokchain. The main objective is to make tests easier to write while making them as clean as posible, it is mostly oriented towards coin and collection management but other functions aswell like time or randomness initialization.
 
+![code example](https://arweave.net/grWA0UizUm3Myx4aiKnxv0U3DKNrQioSLO0Xh-Qcr1c)
+
 > [!WARNING]
 > Don't use the system or ideas of this module outside of testing functions! It is slow, expensive and dangerous.This module is focused on making it comfortable for devs when writing test, not for production.
 
 > [!IMPORTANT]  
 > This module was build using MOVE2, while using it, remember to add `--move-2` flag
+
 
 ## Supported features
 
