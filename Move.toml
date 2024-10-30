@@ -1,0 +1,15 @@
+[package]
+name = "test_utils"
+version = "1.0.0"
+authors = ["0xHepha"]
+
+
+[dependencies]
+AptosFramework = { git = "https://github.com/aptos-labs/aptos-core.git", subdir = "aptos-move/framework/aptos-framework/", rev = "aptos-cli-v4.2.6" }
+AptosTokenObjects = { git = "https://github.com/aptos-labs/aptos-core.git", subdir = "aptos-move/framework/aptos-token-objects/", rev = "aptos-cli-v4.2.6" }
+AptosToken = { git = "https://github.com/aptos-labs/aptos-core.git", subdir = "aptos-move/framework/aptos-token/", rev = "aptos-cli-v4.2.6" }
+
+
+[addresses]
+aptos_framework = "0x1"
+deployer = ""
