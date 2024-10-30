@@ -842,4 +842,58 @@ module deployer::tu{
     public fun object(self: &Item): object::Object<aptos_token::AptosToken> {
         object::address_to_object<AptosToken>(token_v2(self).address)
     }
+
+
+    public fun tokens_of(user: address):vector<Item> acquires CollectionsV1,CollectionsV2 {
+        let res = vector<Item>[];
+
+        // first process v1 collections
+        let collections_1 = CollectionsV1[@deployer].tokens;
+        let collections_amount_1 = collections_1.length();
+        for(i in 0..collections_amount_1){
+            // Get vector of tokens of the collection
+            let tokens = collections_1[i];
+
+            // Get amount of tokens in collection 
+            let tokens_amount = tokens.length();
+
+            for(j in 0..tokens_amount){
+                // get token
+                let token = tokens[j];
+                // If user is the owner, append it to return array
+                if(token.is_owner(user)){
+                    res.push_back(token);
+                };
+            };
+        };
+
+        // process v2 collections aswell
+        let collections_2 = CollectionsV2[@deployer].tokens;
+        let collections_amount_2 = collections_2.length();
+        for(i in 0..collections_amount_2){
+            // Get vector of tokens of the collection
+            let tokens = collections_2[i];
+
+            // Get amount of tokens in collection 
+            let tokens_amount = tokens.length();
+
+            for(j in 0..tokens_amount){
+                // get token
+                let token = tokens[j];
+                // If user is the owner, append it to return array
+                if(token.is_owner(user)){
+                    res.push_back(token);
+                };
+            };
+        };
+
+        res
+    }
+
+    
+    public fun tokens_amount(user: address):u64 acquires CollectionsV1,CollectionsV2 {
+        let tokens = tokens_of(user);
+        tokens.length()
+    }
+    
 }
